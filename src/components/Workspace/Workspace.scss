@@ -1,0 +1,37 @@
+.worcspace {
+  width: 70%;
+  margin: 1rem;
+}
+.worcspaceEdit {
+  &__title {
+    width: 100%;
+    min-height: 30px;
+    margin-bottom: 1rem;
+    border: none;
+    padding: 8px;
+    font-size: 16px;
+    &:focus {
+      outline: none;
+    }
+    &::placeholder {
+      color: #999;
+      font-family: "Mukta", sans-serif;
+    }
+  }
+  &__body {
+    width: 100%;
+    min-height: 200px;
+    border: none;
+    padding: 8px;
+    font-size: 16px;
+    resize: none;
+
+    &::placeholder {
+      color: #999;
+      font-family: "Mukta", sans-serif;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}

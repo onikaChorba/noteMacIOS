@@ -1,11 +1,11 @@
 import { useState } from "react";
 import uuid from "react-uuid";
-import Sidebar from "./components/Sidebar";
-import Workspace from "./components/Workspace";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Workspace from "./components/Workspace/Workspace";
 
 function App() {
   const [notes, setNotes] = useState([]);
-
+  const [activeNote, setActiveNote] = useState(false);
   const onAddNote = () => {
     console.log("Add Note");
     const newNote = {
@@ -19,7 +19,7 @@ function App() {
     setNotes(notes.filter((note) => note.id !== idToDelete));
   };
   return (
-    <div className="App" style={{ display: "flex" }}>
+    <div className="app mainContainer">
       <Sidebar
         notes={notes}
         onAddNote={onAddNote}
