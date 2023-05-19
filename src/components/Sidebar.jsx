@@ -1,22 +1,30 @@
 import React from "react";
 
-export default function Sidebar() {
+export default function Sidebar({ notes, onAddNote, onDeleteNote }) {
   return (
     <div>
       <div className="sidebarHeader">
         <h1>Notes</h1>
-        <button>+</button>
+        <button onClick={onAddNote}>+</button>
       </div>
       <div className="sidebarNotes">
-        <div className="sidebarNote">
-          <div className="sidebarNote__title">
-            <strong>Title</strong>
-            <button>X</button>
-          </div>
+        {notes.map((note, index) => (
+          <div className="sidebarNote" key={index}>
+            <div className="sidebarNote__title">
+              <strong>{note.title}</strong>
+              <button onClick={() => onDeleteNote(note.id)}>X</button>
+            </div>
 
-          <p>Note preview</p>
-          <small className="note__meta">Last modified [data]</small>
-        </div>
+            <p>{note.body && note.body.substr(0, 100) + "..."}</p>
+            <small className="note__meta">
+              Last modified{" "}
+              {new Date(note.lastModified).toLocaleDateString("en-GB", {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
+            </small>
+          </div>
+        ))}
       </div>
     </div>
   );
