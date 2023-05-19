@@ -1,0 +1,40 @@
+.sidebar {
+  width: 30%;
+}
+.sidebarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__title {
+    font-size: 30px;
+    font-weight: 700;
+  }
+  &__button {
+    background-color: transparent;
+    color: #000;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 30px;
+    transition-duration: 1s;
+    &:hover {
+      color: orange;
+    }
+  }
+}
+.sidebarNote {
+  border-bottom: 2px solid white;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.noteDelete {
+  transform: rotate(45deg);
+}
+.noteMeta {
+  font-size: 10px;
+}
