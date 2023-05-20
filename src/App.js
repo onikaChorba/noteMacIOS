@@ -41,6 +41,9 @@ function App() {
     if (storedNotes) {
       setNotes(JSON.parse(storedNotes));
     }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
 
   return (
