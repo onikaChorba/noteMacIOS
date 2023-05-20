@@ -4,7 +4,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Workspace from "./components/Workspace/Workspace";
 
 function App() {
-  const [notes, setNotes] = useState(JSON.parse(localStorage.notes) || []);
+  const [notes, setNotes] = useState([]);
   const [activeNote, setActiveNote] = useState(false);
 
   const onAddNote = () => {
@@ -37,7 +37,10 @@ function App() {
   };
 
   useEffect(() => {
-    localStorage.setItem("notes", JSON.stringify(notes));
+    const storedNotes = localStorage.getItem("notes");
+    if (storedNotes) {
+      setNotes(JSON.parse(storedNotes));
+    }
   }, [notes]);
 
   return (
