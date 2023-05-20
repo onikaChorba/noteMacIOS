@@ -1,13 +1,17 @@
 .sidebar {
-  width: 30%;
+  min-width: 30%;
 }
 .sidebarHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0.5rem;
   &__title {
     font-size: 30px;
     font-weight: 700;
+  }
+  &__body {
+    width: 90%;
   }
   &__button {
     background-color: transparent;
@@ -25,7 +29,7 @@
 .sidebarNote {
   border-bottom: 2px solid white;
   margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
+  padding: 0.5rem;
   &__title {
     display: flex;
     justify-content: space-between;
@@ -37,4 +41,7 @@
 }
 .noteMeta {
   font-size: 10px;
+}
+.active {
+  background: white;
 }
