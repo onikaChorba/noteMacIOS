@@ -8,7 +8,7 @@
     min-height: 30px;
     margin-bottom: 1rem;
     border: none;
-    padding: 8px;
+    padding: 1rem;
     font-size: 16px;
     &:focus {
       outline: none;
@@ -22,10 +22,9 @@
     width: 100%;
     min-height: 200px;
     border: none;
-    padding: 8px;
+    padding: 1rem;
     font-size: 16px;
     resize: none;
-
     &::placeholder {
       color: #999;
       font-family: "Mukta", sans-serif;
@@ -33,5 +32,27 @@
     &:focus {
       outline: none;
     }
+  }
+}
+.noNote {
+  width: 100%;
+  min-height: 50vh;
+  background: white;
+  margin: 1rem;
+  padding: 1rem;
+  color: #999;
+  font-family: "Mukta", sans-serif;
+}
+.worcspacePreview {
+  border: 2px solid white;
+  min-height: 40%;
+  padding: 1rem;
+  width: 100%;
+
+  &__title {
+    width: 80%;
+  }
+  &__body {
+    width: 80%;
   }
 }
