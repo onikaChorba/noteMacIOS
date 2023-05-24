@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import "./Sidebar.scss";
 
@@ -9,17 +10,35 @@ export default function Sidebar({
   activeNote,
   setActiveNote,
 }) {
+  const [searchQuery, setSearchQuery] = useState("");
+
   const sortedNotes = notes.sort((a, b) => b.lastModified - a.lastModified);
+
+  const filteredNotes = sortedNotes.filter((note) =>
+    note.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+  };
   return (
     <div className="sidebar">
-      <div className="sidebarHeader">
-        <h1 className="sidebarHeader__title">Notes</h1>
-        <button onClick={onAddNote} className="sidebarHeader__button">
-          <p>+</p>
-        </button>
+      <div>
+        <div className="sidebarHeader">
+          <h1 className="sidebarHeader__title">Notes</h1>
+          <button onClick={onAddNote} className="sidebarHeader__button">
+            <p>+</p>
+          </button>
+        </div>
+        <input
+          className="sidebar__find"
+          value={searchQuery}
+          onChange={handleSearch}
+          placeholder="Search by title"
+        />
       </div>
       <div className="sidebarNotes">
-        {sortedNotes.map((note, index) => (
+        {filteredNotes.map((note, index) => (
           <div
             className={`sidebarNote ${note.id === activeNote && "active"}`}
             key={index}
@@ -27,7 +46,9 @@ export default function Sidebar({
           >
             <div className="sidebarNote__title">
               <div>
-                <strong className="noteTitle">{note.title}</strong>
+                <strong className="noteTitle">
+                  {note.title && note.title.substr(0, 15) + "..."}
+                </strong>
               </div>
               <button
                 onClick={() => onDeleteNote(note.id)}
@@ -38,7 +59,7 @@ export default function Sidebar({
             </div>
 
             <ReactMarkdown className="sidebarNote__body">
-              {note.body && note.body.substr(0, 50) + "..."}
+              {note.body && note.body.substr(0, 20) + "..."}
             </ReactMarkdown>
             <small className="noteMeta">
               {new Date(note.lastModified).toLocaleDateString("en-GB", {
