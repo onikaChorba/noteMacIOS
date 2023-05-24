@@ -1,39 +1,49 @@
-import { useEffect, useState } from "react";
-import uuid from "react-uuid";
+import React, { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Workspace from "./components/Workspace/Workspace";
 
 function App() {
   const [notes, setNotes] = useState([]);
-  const [activeNote, setActiveNote] = useState(false);
+  const [activeNote, setActiveNote] = useState(null);
 
   const onAddNote = () => {
-    console.log("Add Note");
     const newNote = {
-      id: uuid(),
-      title: "Untitle Note",
+      id: uuidv4(),
+      title: "Untitled Note",
       lastModified: Date.now(),
     };
-    setNotes([newNote, ...notes]);
+    setNotes((prevNotes) => {
+      const updatedNotes = [...prevNotes, newNote];
+      localStorage.setItem("notes", JSON.stringify(updatedNotes));
+      return updatedNotes;
+    });
+    setActiveNote(newNote.id);
   };
 
   const onDeleteNote = (idToDelete) => {
-    setNotes(notes.filter((note) => note.id !== idToDelete));
+    setNotes((prevNotes) => {
+      const updatedNotes = prevNotes.filter((note) => note.id !== idToDelete);
+      localStorage.setItem("notes", JSON.stringify(updatedNotes));
+      return updatedNotes;
+    });
+    setActiveNote((prevActiveNote) =>
+      prevActiveNote === idToDelete ? null : prevActiveNote
+    );
   };
 
   const getActiveNote = () => {
     return notes.find((note) => note.id === activeNote);
   };
 
-  const onUpdateNote = (updateNote) => {
-    const updateNotesArray = notes.map((note) => {
-      if (note.id === activeNote) {
-        return updateNote;
-      }
-      return note;
+  const onUpdateNote = (updatedNote) => {
+    setNotes((prevNotes) => {
+      const updatedNotes = prevNotes.map((note) =>
+        note.id === updatedNote.id ? updatedNote : note
+      );
+      localStorage.setItem("notes", JSON.stringify(updatedNotes));
+      return updatedNotes;
     });
-
-    setNotes(updateNotesArray);
   };
 
   useEffect(() => {
@@ -42,9 +52,6 @@ function App() {
       setNotes(JSON.parse(storedNotes));
     }
   }, []);
-  useEffect(() => {
-    localStorage.setItem("notes", JSON.stringify(notes));
-  }, [notes]);
 
   return (
     <div className="app mainContainer">
