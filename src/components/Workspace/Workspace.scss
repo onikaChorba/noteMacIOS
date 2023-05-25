@@ -1,8 +1,8 @@
-.worcspace {
+.workspace {
   width: 70%;
   margin: 1rem;
 }
-.worcspaceEdit {
+.workspaceEdit {
   &__title {
     width: 100%;
     min-height: 30px;
@@ -12,6 +12,11 @@
     font-size: 16px;
     &:focus {
       outline: none;
+      background-color: #fff;
+      box-shadow: 0 0 0 1px orange;
+    }
+    &:hover {
+      box-shadow: 0 0 0 1px orange;
     }
     &::placeholder {
       color: #999;
@@ -29,8 +34,13 @@
       color: #999;
       font-family: "Mukta", sans-serif;
     }
+    &:hover {
+      box-shadow: 0 0 0 1px orange;
+    }
     &:focus {
       outline: none;
+      background-color: #fff;
+      box-shadow: 0 0 0 1px orange;
     }
   }
 }
@@ -44,7 +54,7 @@
   font-family: "Mukta", sans-serif;
   background: white;
 }
-.worcspacePreview {
+.workspacePreview {
   border: 2px solid white;
   min-height: 40vh;
   padding: 1rem;
