@@ -12,6 +12,7 @@ function App() {
       id: uuidv4(),
       title: "Untitled Note",
       lastModified: Date.now(),
+      category: null,
     };
     setNotes((prevNotes) => {
       const updatedNotes = [...prevNotes, newNote];

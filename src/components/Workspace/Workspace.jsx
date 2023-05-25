@@ -12,13 +12,13 @@ export default function Workspace({ activeNote, onUpdateNote }) {
   if (!activeNote) return <div className="noNote">No note selected</div>;
 
   return (
-    <div className="worcspace">
-      <div className="worcspaceEdit">
+    <div className="workspace">
+      <div className="workspaceEdit">
         <input
           type="text"
           id="title"
           autoFocus
-          className="worcspaceEdit__title"
+          className="workspaceEdit__title"
           placeholder="Title ..."
           value={activeNote.title}
           onChange={(e) => onEditField("title", e.target.value)}
@@ -26,16 +26,16 @@ export default function Workspace({ activeNote, onUpdateNote }) {
         <textarea
           id="body"
           placeholder="Write your note here..."
-          className="worcspaceEdit__body"
+          className="workspaceEdit__body"
           value={activeNote.body}
           onChange={(e) => onEditField("body", e.target.value)}
         />
       </div>
-      <div className="worcspacePreview">
-        <h1 className="worcspacePreview__title">
+      <div className="workspacePreview">
+        <h1 className="workspacePreview__title">
           <b>{activeNote.title}</b>
         </h1>
-        <ReactMarkdown className="worcspacePreview__body">
+        <ReactMarkdown className="workspacePreview__body">
           {activeNote.body}
         </ReactMarkdown>
       </div>

@@ -14,9 +14,11 @@
     &:focus {
       outline: none;
       background-color: #fff;
-      box-shadow: 0 0 0 2px orange;
+      box-shadow: 0 0 0 1px orange;
     }
-
+    &:hover {
+      box-shadow: 0 0 0 1px orange;
+    }
     &::placeholder {
       color: #999;
     }
@@ -30,6 +32,11 @@
   &__title {
     font-size: 30px;
     font-weight: 700;
+    transition-duration: 1s;
+    &:hover {
+      color: orange;
+      letter-spacing: 2px;
+    }
   }
   &__body {
     width: 90%;
@@ -51,6 +58,10 @@
   border-bottom: 2px solid white;
   margin-bottom: 1rem;
   padding: 0.5rem;
+  &:hover {
+    background: #fff;
+    box-shadow: 0 0 0 1px orange;
+  }
   &__title {
     display: flex;
     justify-content: space-between;
