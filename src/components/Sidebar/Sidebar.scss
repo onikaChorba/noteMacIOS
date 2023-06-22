@@ -54,6 +54,12 @@
     }
   }
 }
+.sidebarNotes {
+  padding: 1rem;
+  background: "red";
+  max-height: 70vh;
+  overflow-y: scroll;
+}
 .sidebarNote {
   border-bottom: 2px solid white;
   margin-bottom: 1rem;
