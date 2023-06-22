@@ -59,7 +59,7 @@ export default function Sidebar({
             </div>
 
             <ReactMarkdown className="sidebarNote__body">
-              {note.body && note.body.substr(0, 20) + "..."}
+              {note.body && note.body.substr(0, 15) + "..."}
             </ReactMarkdown>
             <small className="noteMeta">
               {new Date(note.lastModified).toLocaleDateString("en-GB", {
